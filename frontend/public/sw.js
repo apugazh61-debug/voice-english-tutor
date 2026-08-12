@@ -1,0 +1,25 @@
+const CACHE_NAME = "spidey-tutor-v2";
+
+self.addEventListener("install", (e) => {
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", (e) => {
+  e.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(keys.map((k) => caches.delete(k)))
+    ).then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener("fetch", (e) => {
+  // Only intercept GET requests over HTTP/HTTPS
+  if (e.request.method !== "GET" || !e.request.url.startsWith("http")) {
+    return;
+  }
+  // Always fetch network first to ensure fresh assets
+  e.respondWith(
+    fetch(e.request).catch(() => caches.match(e.request))
+  );
+});
+
