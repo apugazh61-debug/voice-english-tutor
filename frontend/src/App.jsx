@@ -5,6 +5,7 @@ import { ControlsBar } from "./components/ControlsBar.jsx";
 import { StatusBadge } from "./components/StatusBadge.jsx";
 import { useCallMode } from "./hooks/useCallMode.js";
 import { CallModeOverlay } from "./components/CallModeOverlay.jsx";
+import { WelcomeScreen } from "./components/WelcomeScreen.jsx";
 
 const getMimeType = () => {
   if (typeof MediaRecorder === "undefined") return "";
@@ -528,9 +529,11 @@ export default function App() {
                   onRegenerate={handleRegenerate}
                 />
               ) : (
-                <div className="flex h-full items-center justify-center px-6 text-center text-sm text-gray-400">
-                  Start a new conversation, or use the call button to talk.
-                </div>
+                <WelcomeScreen
+                  onSelectPrompt={handleSendText}
+                  onStartCall={handleStartCall}
+                  onStartRecording={handleStartRecording}
+                />
               )}
             </div>
 

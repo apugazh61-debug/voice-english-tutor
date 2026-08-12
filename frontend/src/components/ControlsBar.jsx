@@ -67,7 +67,7 @@ export function ControlsBar({
           onChange={handleFileChange}
         />
 
-        {/* Quick Call Button for voice mode */}
+        {/* Quick Voice Button */}
         <button
           onClick={isRecording ? onStopRecording : onStartRecording}
           disabled={micDisabled}
@@ -77,9 +77,9 @@ export function ControlsBar({
               ? "bg-gradient-to-r from-pink-600 to-rose-600 text-white border-pink-300 animate-pulse shadow-pink-600/50 waheeda-glow-active"
               : "bg-slate-900/80 hover:bg-slate-800 border-pink-500/30 text-gray-200 hover:border-pink-400/60")
           }
-          title="Click to start voice call"
+          title={isRecording ? "Stop recording" : "Click to record voice"}
         >
-          {isRecording ? "📞" : "📞"}
+          {isRecording ? "⏹️" : "🎙️"}
         </button>
 
         {/* Text input */}

@@ -13,8 +13,13 @@ self.addEventListener("activate", (e) => {
 });
 
 self.addEventListener("fetch", (e) => {
+  // Only intercept GET requests over HTTP/HTTPS
+  if (e.request.method !== "GET" || !e.request.url.startsWith("http")) {
+    return;
+  }
   // Always fetch network first to ensure fresh assets
   e.respondWith(
     fetch(e.request).catch(() => caches.match(e.request))
   );
 });
+
