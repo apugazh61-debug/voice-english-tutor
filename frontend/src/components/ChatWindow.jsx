@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, memo } from "react";
 
-function VoiceNoteBubble({ audioUrl, transcript, isUser }) {
+const VoiceNoteBubble = memo(function VoiceNoteBubble({ audioUrl, transcript, isUser }) {
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef(null);
 
@@ -44,10 +44,10 @@ function VoiceNoteBubble({ audioUrl, transcript, isUser }) {
       </div>
     </div>
   );
-}
+});
 
 /* Custom Soft Animated Loading Indicator (Waheeda Thinking) */
-function WaheedaThinkingLoader() {
+const WaheedaThinkingLoader = memo(function WaheedaThinkingLoader() {
   return (
     <div className="flex items-center gap-3 p-3 rounded-2xl bg-pink-950/30 border border-pink-500/30 text-pink-200 max-w-xs msg-swing-ai">
       <div className="w-7 h-7 rounded-full overflow-hidden border border-pink-400/60 shrink-0">
@@ -63,9 +63,9 @@ function WaheedaThinkingLoader() {
       </div>
     </div>
   );
-}
+});
 
-function MessageItem({ msg, isStreaming, onRegenerate }) {
+const MessageItem = memo(function MessageItem({ msg, isStreaming, onRegenerate }) {
   const [copied, setCopied] = useState(false);
   const isUser = msg.role === "user";
 
@@ -134,9 +134,9 @@ function MessageItem({ msg, isStreaming, onRegenerate }) {
       )}
     </div>
   );
-}
+});
 
-export function ChatWindow({ messages, isStreaming, streamingText, onRegenerate }) {
+export const ChatWindow = memo(function ChatWindow({ messages, isStreaming, streamingText, onRegenerate }) {
   const bottomRef = useRef(null);
 
   useEffect(() => {
@@ -168,4 +168,4 @@ export function ChatWindow({ messages, isStreaming, streamingText, onRegenerate 
       <div ref={bottomRef} />
     </div>
   );
-}
+});

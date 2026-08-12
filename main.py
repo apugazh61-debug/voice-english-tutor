@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.staticfiles import StaticFiles
 from groq import Groq
 from dotenv import load_dotenv
@@ -30,6 +31,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"]
 )
+app.add_middleware(GZipMiddleware, minimum_size=500)
 
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
@@ -89,6 +91,8 @@ except Exception:
 def init_db():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
+    cursor.execute("PRAGMA journal_mode=WAL;")
+    cursor.execute("PRAGMA synchronous=NORMAL;")
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS sessions (
             id         TEXT PRIMARY KEY,
@@ -105,6 +109,7 @@ def init_db():
             timestamp  DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     """)
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_conversations_session ON conversations(session_id);")
     conn.commit()
     conn.close()
 
