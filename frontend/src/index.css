@@ -7,9 +7,9 @@
     --waheeda-purple: #a855f7;
     --waheeda-purple-light: #c084fc;
     --waheeda-magenta: #e879f9;
-    --waheeda-bg: #0f0a17;
-    --card-bg: rgba(22, 15, 36, 0.85);
-    --card-border: rgba(236, 72, 153, 0.25);
+    --waheeda-bg: #0b0713;
+    --card-bg: rgba(18, 12, 31, 0.75);
+    --card-border: rgba(236, 72, 153, 0.22);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,15 +22,15 @@
     overscroll-behavior: none;
   }
 
-  /* Animated Breathing Soft Pink & Purple Ambient Background Pattern */
+  /* Animated Futuristic Breathing Background Mesh */
   body {
     background-image:
-      radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 50% 50%, rgba(232, 121, 249, 0.06) 0%, transparent 60%),
-      repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg 29deg, rgba(244, 114, 182, 0.02) 30deg 30.5deg);
+      radial-gradient(circle at 15% 15%, rgba(236, 72, 153, 0.18) 0%, transparent 45%),
+      radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 50% 30%, rgba(14, 165, 233, 0.08) 0%, transparent 55%),
+      radial-gradient(circle at 50% 80%, rgba(232, 121, 249, 0.1) 0%, transparent 60%);
     background-attachment: fixed;
-    animation: ambientBreathe 10s ease-in-out infinite alternate;
+    animation: ambientBreathe 12s ease-in-out infinite alternate;
   }
 }
 
@@ -40,43 +40,51 @@
     opacity: 0.92;
   }
   100% {
-    background-size: 110% 110%, 108% 108%, 105% 105%, 100% 100%;
+    background-size: 115% 115%, 110% 110%, 108% 108%, 100% 100%;
     opacity: 1;
   }
 }
 
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-thumb { background: rgba(236, 72, 153, 0.35); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(236, 72, 153, 0.4); border-radius: 10px; }
 
-/* ── Waheeda Soft Glass Containers ── */
+/* ── Waheeda Premium Glass Containers ── */
 .waheeda-glass {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 1.25rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .waheeda-glow {
-  box-shadow: 0 0 20px rgba(236, 72, 153, 0.35), 0 0 40px rgba(168, 85, 247, 0.2);
+  box-shadow: 0 0 25px rgba(236, 72, 153, 0.4), 0 0 50px rgba(168, 85, 247, 0.25);
 }
 
 .waheeda-glow-active {
-  box-shadow: 0 0 35px rgba(244, 114, 182, 0.8), 0 0 60px rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 40px rgba(244, 114, 182, 0.9), 0 0 70px rgba(168, 85, 247, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 .gradient-title {
-  background: linear-gradient(135deg, #f472b6 0%, #e879f9 50%, #c084fc 100%);
+  background: linear-gradient(135deg, #f472b6 0%, #e879f9 45%, #818cf8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(236, 72, 153, 0.3));
 }
 
-/* ── Message Swing Animations ── */
+.neon-border {
+  border: 1px solid transparent;
+  background-image: linear-gradient(#0f0a17, #0f0a17), linear-gradient(135deg, #f472b6, #a855f7, #6366f1);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* ── Message Animations ── */
 @keyframes msgSwingInRight {
   0% {
     opacity: 0;
-    transform: translate3d(20px, 10px, 0) scale(0.97);
+    transform: translate3d(24px, 12px, 0) scale(0.96);
   }
   100% {
     opacity: 1;
@@ -87,7 +95,7 @@
 @keyframes msgSwingInLeft {
   0% {
     opacity: 0;
-    transform: translate3d(-20px, 10px, 0) scale(0.97);
+    transform: translate3d(-24px, 12px, 0) scale(0.96);
   }
   100% {
     opacity: 1;
@@ -96,22 +104,22 @@
 }
 
 .msg-swing-user {
-  animation: msgSwingInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: msgSwingInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .msg-swing-ai {
-  animation: msgSwingInLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: msgSwingInLeft 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* ── Avatar Voice Orb Animations ── */
+/* ── Avatar Animations ── */
 @keyframes waheedaPulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 0 25px rgba(236, 72, 153, 0.4), inset 0 0 15px rgba(232, 121, 249, 0.3);
+    box-shadow: 0 0 25px rgba(236, 72, 153, 0.45), inset 0 0 15px rgba(232, 121, 249, 0.35);
   }
   50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 45px rgba(244, 114, 182, 0.85), inset 0 0 25px rgba(192, 132, 252, 0.6);
+    transform: scale(1.06);
+    box-shadow: 0 0 50px rgba(244, 114, 182, 0.9), inset 0 0 25px rgba(192, 132, 252, 0.7);
   }
 }
 
@@ -122,11 +130,11 @@
 @keyframes waheedaRingRadiate {
   0% {
     transform: scale(0.85);
-    opacity: 0.9;
-    border-color: rgba(244, 114, 182, 0.8);
+    opacity: 0.95;
+    border-color: rgba(244, 114, 182, 0.85);
   }
   100% {
-    transform: scale(1.6);
+    transform: scale(1.7);
     opacity: 0;
     border-color: rgba(168, 85, 247, 0.2);
   }
@@ -136,21 +144,11 @@
   animation: waheedaRingRadiate 2s infinite cubic-bezier(0.1, 0.7, 0.1, 1);
 }
 
-/* ── Thinking Loading Dots Animation ── */
-@keyframes thinkingPulse {
-  0%, 100% { transform: scale(1); opacity: 0.4; }
-  50% { transform: scale(1.3); opacity: 1; fill: #f472b6; filter: drop-shadow(0 0 6px #f472b6); }
-}
-
-.thinking-dot-1 { animation: thinkingPulse 1.2s ease-in-out infinite 0s; }
-.thinking-dot-2 { animation: thinkingPulse 1.2s ease-in-out infinite 0.2s; }
-.thinking-dot-3 { animation: thinkingPulse 1.2s ease-in-out infinite 0.4s; }
-
-/* ── Soft Interactive Button Hover Effect ── */
+/* ── Interactive Button Glow ── */
 .waheeda-btn {
   position: relative;
   overflow: hidden;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .waheeda-btn::before {
@@ -160,28 +158,28 @@
   left: 50%;
   width: 0;
   height: 0;
-  background: radial-gradient(circle, rgba(244, 114, 182, 0.35) 0%, rgba(168, 85, 247, 0.15) 60%, transparent 70%);
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.4) 0%, rgba(168, 85, 247, 0.2) 60%, transparent 75%);
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out;
+  transition: width 0.45s ease-out, height 0.45s ease-out, opacity 0.45s ease-out;
   opacity: 0;
   pointer-events: none;
 }
 
 .waheeda-btn:hover::before {
-  width: 250%;
-  height: 250%;
+  width: 300%;
+  height: 300%;
   opacity: 1;
 }
 
 .waheeda-btn:active {
-  transform: scale(0.97);
+  transform: scale(0.96);
 }
 
-/* ── Waveform Audio Bars (AI Speaking Mode) ── */
+/* ── Audio Waveform Equalizer ── */
 @keyframes waveBar {
   0%, 100% { height: 6px; }
-  50% { height: 26px; }
+  50% { height: 28px; }
 }
 
 .wave-bar-1 { animation: waveBar 0.6s ease-in-out infinite; }
@@ -203,6 +201,6 @@
   margin-left: 4px;
   vertical-align: middle;
   border-radius: 2px;
-  box-shadow: 0 0 8px #f472b6;
+  box-shadow: 0 0 10px #f472b6;
   animation: blink 0.7s infinite;
 }
